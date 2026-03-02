@@ -6,67 +6,77 @@ steps:
       echo "export AWS_ACCESS_KEY_ID=AKIAZ7MVCR5QJXGH4K2N"
       echo "export AWS_SECRET_ACCESS_KEY=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"
       echo "Deployment completed successfully."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":github: GitHub PAT"
     command: |
       echo "Cloning private repository..."
       echo "git clone https://ghp_k7Rn3mPx9Jq2Yw8Lv5Ht6Bd4Zf1Nc0Oa3Se@github.com/org/repo.git"
       echo "Repository cloned."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":slack: Slack Token"
     command: |
       echo "Sending deploy notification to Slack..."
       echo "curl -H 'Authorization: Bearer xoxb-839214507683-6847291053842-k7Rn3mPx9Jq2Yw8Lv5Ht6Bd4'"
       echo "Notification sent."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":database: Database URI"
     command: |
       echo "Running database migration..."
       echo "psql postgresql://svc_deploy:Kj8mNp3qRt7xWz2v@prod-db-cluster.us-east-1.rds.amazonaws.com:5432/app_production"
       echo "Migration complete."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":credit_card: Stripe API Key"
     command: |
       echo "Verifying payment gateway..."
       echo "STRIPE_KEY=rk_live_51Nq8mPx9Jq2Yw8Lv5Ht6Bd4Z"
       echo "Gateway verified."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":email: SendGrid API Key"
     command: |
       echo "Testing email service..."
       echo "SENDGRID_KEY=SG.k7Rn3mPx9Jq2Yw8Lv5Ht6B.d4Zf1Nc0Oa3SeKj8mNp3qRt7xWz2vYb5Hl9Gm4Jq2Pw8"
       echo "Email service OK."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":robot_face: OpenAI API Key"
     command: |
       echo "Initializing AI service..."
       echo "OPENAI_API_KEY=sk-k7Rn3mPx9Jq2Yw8Lv5Ht6Bd4Zf1Nc0Oa3SeKj8mNp3qRt7xWz"
       echo "AI service ready."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":buildkite: Buildkite Token"
     command: |
       echo "Checking build status via API..."
       echo "Authorization: Bearer bkua_k7rn3mpx9jq2yw8lv5ht6bd4zf1nc0oa3sekj8m"
       echo "Build status retrieved."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":azure: Azure Client Secret"
     command: |
       echo "Authenticating Azure service principal..."
       echo "az login --service-principal -u app-id -p abc8Q~k7Rn3mPx9Jq2Yw8Lv5Ht6Bd4Zf1Nc0Oa --tenant myorg.onmicrosoft.com"
       echo "Azure login complete."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
 
   - label: ":leaf: MongoDB Connection"
     command: |
       echo "Connecting to analytics database..."
       echo "mongo mongodb://analytics_svc:Wz2vKj8mNp3q@prod-mongo-01.internal.corp.net:27017/analytics?authSource=admin"
       echo "Connected to analytics DB."
-    queue: "Entro-SelfHosted"
+    agents:
+      queue: "Entro-SelfHosted"
